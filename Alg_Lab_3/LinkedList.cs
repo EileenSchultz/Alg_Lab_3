@@ -47,7 +47,6 @@ public class LinkedList<T> : IEnumerable<T>
         {
             head = node;
             tail = node;
-
         }
         else
         {
@@ -162,19 +161,19 @@ public class LinkedList<T> : IEnumerable<T>
     public int RemoveAll(T item)
     {
         var cmp = EqualityComparer<T>.Default;
-        int removed = 0;
+        int removedItems = 0;
 
         while (head != null && cmp.Equals(head.Value, item))
         {
             head = head.Next;
-            removed++;
+            removedItems++;
         }
 
         if (head == null)
         {
-            Count -= removed;
+            Count -= removedItems;
             tail = null;
-            return removed;
+            return removedItems;
         }
 
         var prev = head;
@@ -182,8 +181,9 @@ public class LinkedList<T> : IEnumerable<T>
         {
             if (cmp.Equals(prev.Next.Value, item))
             {
-                prev.Next = prev.Next.Next;
-                removed++;
+                var removed = prev.Next;
+                prev.Next = removed.Next;
+                removedItems++;
             }
             else
             {
@@ -192,8 +192,8 @@ public class LinkedList<T> : IEnumerable<T>
         }
 
         tail = prev;
-        Count -= removed;
-        return removed;
+        Count -= removedItems;
+        return removedItems;
     }
 
     public LinkedList<T> Clone()
