@@ -9,7 +9,6 @@ namespace Alg_Lab_3
         // Метод для вычисления постфиксного выражения
         public static double Evaluate(string expression)
         {
-            // Используем ваш кастомный стек
             var stack = new Stack<double>();
             
             // Разбиваем строку на токены по пробелам

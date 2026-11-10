@@ -24,9 +24,8 @@ namespace Alg_Lab_3
 
         public static string Convert(string infix)
         {
-            // Выходная очередь/список (используем стандартный List для простоты или ваш Queue)
+            // Выходная очередь/список 
             var output = new List<string>();
-            // Ваш кастомный стек для операторов
             var stack = new Stack<string>();
 
             // Токенизация (разбиваем строку на числа и операторы)
